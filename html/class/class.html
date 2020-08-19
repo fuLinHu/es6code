@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+</html>
+<script>
+	class Star{
+		constructor(name,age) { //构造函数
+		    this.name = name;
+			this.age = age;
+		}
+		sing(song){
+			console.log(this.name+" 在唱 "+song);
+		}
+	}
+	let jialing = new Star("贾玲",30);
+	console.log(jialing.name)
+	console.log(jialing.age)
+	jialing.sing("心太软")
+</script>

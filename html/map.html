@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js">
+	</head>
+	<body>
+		<div>
+			
+		</div>
+	</body>
+</html>
+<script type="text/javascript">
+	let map = new Map();
+	map.set("a","你好")
+	map.set("a","你好1")
+	console.log(map.get("a"))
+	console.log("----------------------")
+    var obj = {"a":"hello"};
+	var obj1 = {"a":"hello1"};
+	map.set(obj,"你好")
+	map.set(obj1,"你好1")
+	console.log(map.get(obj1))
+	//虽然 NaN 和任何值甚至和自己都不相等(NaN !== NaN 返回true)，NaN作为Map的键来说是没有区别的。
+	console.log("遍历1-----------")
+	for([k,v] of map){
+		console.log(k)
+		console.log(v)
+	}
+	console.log("遍历2-----------")
+	console.log(map.entries())
+	for (var [key, value] of map.entries()) {
+	  console.log(key + " = " + value);
+	}
+	console.log("遍历3-----------")
+	map.forEach((k,v)=>{
+		console.log(k+"::"+v)
+	})
+	console.log("===================map和arry之间转换========================")
+	var arr = [["a","b"],["c","d"]]
+	map = new Map(arr)
+	map.forEach((k,v)=>{
+		console.log(k+"::"+v)
+	})
+	arr = Array.from(map)
+	for(i in arr){
+		console.log(i)
+	}
+</script>

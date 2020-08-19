@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+</html>
+<script>
+	function Star(name,age){
+		this.name = name;
+		this.age = age;
+		// this.sing=function(){
+		// 	console.log(this)
+		// 	console.log("我在唱歌")
+		// }
+	}
+	Star.prototype.sing=function(){
+			console.log(this)
+			console.log("我在唱歌")
+		}
+	var ldh = new Star("刘德华",50);
+	var zxy = new Star("张学友",60);
+	//console.log(ldh==zxy)
+	console.log(ldh.__proto__)
+	console.log(Star.prototype.constructor.prototype.constructor.prototype.__proto__)
+	
+	//Star(类)得prototype  和  ldh（类得对象）得__proto__（对象得原型）相同，因此实例对象可以访问 原型对象上得方法
+	//prototype是类得原型对象，只在类上  
+	// __proto__ 在实例和类上  
+</script>

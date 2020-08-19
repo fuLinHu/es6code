@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<button id="but"></button>
+	</body>
+</html>
+<script>
+	class Father{
+		constructor(x,y) {
+			this.x=x;
+			this.y=y;
+			this.but= document.getElementById("but");
+			this.but.onclick = this.say;
+		}
+		sum(){
+			console.log(this.x+this.y);
+		}
+		say(){
+			console.log(this);
+			console.log("this is a father")
+		}
+	}
+	class Son extends Father{
+		constructor(x,y) {
+		    super(x,y)
+		}
+		say(){
+			super.say()
+			console.log("this is a son")
+		}
+	}
+	let son = new Son(3,4);
+	son.sum()
+	son.say()
+	console.log("-------------------------")
+	let fa = new Father(3,4);
+
+</script>

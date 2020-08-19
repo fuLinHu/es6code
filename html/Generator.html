@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+</html>
+<script>
+	//1.初步认识 Generator
+	/* function *run(){
+		yield "a";
+		yield "b";
+		yield "c";
+		yield "d";
+		yield "e";
+		return "fulinhu end.....";
+	}
+	var r = run();
+	var res = r.next();
+	console.log(res) */
+	//2.next() 传参
+	/* function *run(){
+		let n = 1;
+		let yi = yield ++n + 22;
+		console.log("方法内部得："+yi)
+		yield ++n;
+		yield ++n;
+	}
+	let r = run();
+	console.log(r.next());
+	//覆盖了  上一次 let yi = yield ++n + 22; 的返回值
+	//同时在运行本次的 yield
+	console.log(r.next(44));  //打印出  console.log("方法内部得："+yi)  方法内部得：44
+	console.log(r.next()); */
+	
+	//3.  Generator 迭代
+	function *run(){
+		yield "a";
+		yield "b";
+		yield "c";
+	}
+	let r = run();
+	for(let a of r){
+		console.log(a)
+	}
+	
+	
+	
+	
+	
+</script>

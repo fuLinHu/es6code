@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+</html>
+<script>
+	let user = {
+		"name":"tom",
+		"age":10,
+		"birthday":new Date()
+	}
+	let pro =new Proxy(user,{
+		get(target, propKey, receiver){
+			console.log(target)
+			console.log(propKey)
+			console.log(receiver)
+			 console.log('Getting ' + propKey);
+			 return target[propKey]
+		}
+	})
+	console.log(pro.name);
+	console.log("get 方法可以继承------------");
+	let prox = new Proxy({},{
+		get(target,propKey,receiver){
+			if(propKey[0]==="_"){
+				throw new Error(`Invalid attempt to get private     "${propKey}"`)
+			}
+			return target[propKey]
+		},
+		set(obj, prop, value,receiver){ //第四个参数 receiver 表示原始操作行为所在对象，一般是 Proxy 实例本身。
+			obj[prop] = value
+			console.log('----set----------')
+			console.log(obj)
+			console.log(prop)
+			console.log(value)
+		}
+	})
+	let obj = Object.create(prox)
+	obj.score=100
+	console.log(obj.score)
+	console.log("get set 可以对对象的方法进行拦截处理------------");
+	prox.name = "fulinhu"
+	prox._age = 10
+	console.log(prox.name)
+	//console.log(prox._age)
+	console.log("apply------------");
+	let funProxy = new Proxy(function(a,b){
+		return a+b;
+	},{
+		apply(target, ctx, args){
+			console.log('handle apply');
+			target(args)
+			return Reflect.apply(...arguments);
+		}
+	})
+	console.log(funProxy(3,5))
+</script>

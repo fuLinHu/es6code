@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+</html>
+<script>
+	function Star(name,age){
+		this.name = name;
+		this.age = age;
+	}
+	Star.prototype={
+		constructor:Star, //将Star 重新赋值给constructor
+		sing:function(){
+			console.log("在唱歌")
+		},
+		moive:function(){
+			console.log("在演电影")
+		}
+	}
+	var ldh = new Star("刘德华",50)
+	ldh.sing()
+	console.log(ldh.__proto__)
+	console.log(Star.prototype.constructor) //原型丢失 因为Star.prototyp 将prototyp赋值一个新得对象，丢失了constructor得属性
+</script>

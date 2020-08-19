@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+</html>
+<script>
+	let user ={
+		name:"fulinhu",
+		age:10,
+		get info(){
+		   return this.name + this.age;
+		}
+	}
+
+	console.log(Reflect.get(user,"name"))    
+	console.log(Reflect.get(user,"age"))    
+	let receiver = {
+	    name: "Jerry",
+	    age: 20
+	}
+	console.log(Reflect.get(user, 'info', receiver)); // Jerry20
+	console.log(Reflect.get(user,"name",receiver))
+	console.log(Reflect.get(user,"age",receiver))    
+	console.log("-------------set方法--------------")
+	let myinfo ={
+		name:"fulinhu",
+		age:30,
+		set infofun(value){
+			console.log("赋值的餐宿"+value)
+			this.age = value;
+		}
+	}
+	Reflect.set(myinfo,"age",200)
+	// 当 target 对象中存在 name 属性 setter 方法时，setter 方法中的 this 会绑定 // receiver , 所以修改的实际上是 receiver 的属性,
+	let setRE = {
+		age:80
+	}
+	Reflect.set(myinfo,"infofun",200,setRE)
+	
+	function exam(name){
+	    this.name = name;
+	}
+	Reflect.construct(exam, ['Tom']);
+	console.log(exam)
+</script>
