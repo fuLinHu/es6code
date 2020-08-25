@@ -8,11 +8,65 @@
 	</body>
 </html>
 <script>
-	async function run(){
+	//1.返回值是一个 Promise 对象
+	/* async function run(){
 		console.log("async ----")
 	}
-	//返回值是一个 Promise 对象
 	var r = run();
 	console.log(r)
-	console.log("end ----")
+	console.log("end ----") */
+	
+	//和wait结合使用
+	// function takeLongTime(n) {
+	//     return new Promise(resolve => {
+	//         setTimeout(() => resolve(n + 200), n);
+	//     });
+	// }
+	
+	// function takeLongTime(n) {
+	//     return new Promise(function(re){
+	// 		 setTimeout(function(){
+	// 			 re(n + 200);
+	// 		 } , n);
+	// 	}) 
+	// }
+	
+	// function step1(n) {
+	//     console.log(`step1 with ${n}`);
+	//     return takeLongTime(n);
+	// }
+	
+	// function step2(n) {
+	//     console.log(`step1 with ${n}`);
+	//     return takeLongTime(n);
+	// }
+	// function step3(n) {
+	//     console.log(`step1 with ${n}`);
+	//     return takeLongTime(n);
+	// }
+	// console.log(step1(1000))
+	// console.log(step1(2000))
+	// console.log(step1(3000))
+	
+	function time(n){
+	    return new Promise((resolve,reject)=>{
+			setTimeout(function(){
+				resolve(n);
+			},2000)
+		})
+	}
+	
+	async function main(){
+		 var time1 = await time(100);
+		 console.log(time1)
+		 var time2 = await time(time1+100);
+		 console.log(time2)
+		 var time3 = await time(time2+100);
+		 console.log(time3)
+	}
+	main();
+
+	
+	
+	
 </script>
